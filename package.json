@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@storybook/react": "^4.1.11",
+    "@storybook/addon-actions": "^4.1.11",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "styled-components": "^4.1.3"

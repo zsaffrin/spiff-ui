@@ -1,5 +1,5 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { func, string } from 'prop-types';
 import styled from 'styled-components';
 import {
   adjustHexLightness, hexIsLight, hexToRgb, isHex,
@@ -15,7 +15,18 @@ const determineTextShadow = (color) => {
   return `0 -1px 0 rgba(${rgb.join(', ')}, 0.5)`;
 };
 
-const Button = ({ color, content, size }) => {
+const Button = ({
+  click, color, content, icon, size,
+}) => {
+  const IconWrap = styled.div``;
+  const LabelWrap = styled.div``;
+  const ContentWrap = styled.div`
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  `;
+
   const StyledButton = styled.button(({ theme }) => {
     const {
       baseFontSize, buttons, colors, spacing,
@@ -31,19 +42,19 @@ const Button = ({ color, content, size }) => {
     let padding = '5px';
     if (spacing) {
       padding = `${spacing.md} ${spacing.lg}`;
-      if (size === 'xs' || size === 'sm') {
+      if (size === 'tiny' || size === 'small') {
         padding = `${spacing.sm} ${spacing.md}`;
       }
-      if (size === 'lg') padding = `${spacing.md} ${spacing.lg}`;
-      if (size === 'xl') padding = `${spacing.lg} ${spacing.xl}`;
+      if (size === 'large') padding = `${spacing.md} ${spacing.lg}`;
+      if (size === 'huge') padding = `${spacing.lg} ${spacing.xl}`;
     }
 
     let fontsize = `${baseFontSize}px` || '16px';
     if (size && baseFontSize) {
-      if (size === 'xs') fontsize = `${baseFontSize * 0.7}px`;
-      if (size === 'sm') fontsize = `${baseFontSize * 0.9}px`;
-      if (size === 'lg') fontsize = `${baseFontSize * 1.5}px`;
-      if (size === 'xl') fontsize = `${baseFontSize * 2}px`;
+      if (size === 'tiny') fontsize = `${baseFontSize * 0.7}px`;
+      if (size === 'small') fontsize = `${baseFontSize * 0.9}px`;
+      if (size === 'large') fontsize = `${baseFontSize * 1.5}px`;
+      if (size === 'huge') fontsize = `${baseFontSize * 2}px`;
     }
 
     return `
@@ -75,16 +86,27 @@ const Button = ({ color, content, size }) => {
     `;
   });
 
-  return <StyledButton type="button">{content}</StyledButton>;
+  return (
+    <StyledButton type="button" onClick={click}>
+      <ContentWrap>
+        {icon ? <IconWrap>{icon}</IconWrap> : ''}
+        <LabelWrap>{content}</LabelWrap>
+      </ContentWrap>
+    </StyledButton>
+  );
 };
 Button.propTypes = {
+  click: func,
   color: string,
   content: string,
+  icon: string,
   size: string,
 };
 Button.defaultProps = {
+  click: () => {},
   color: '',
   content: '',
+  icon: '',
   size: '',
 };
 
