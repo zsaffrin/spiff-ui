@@ -34,7 +34,7 @@ const BasicButton = ({
       content={content}
       icon={icon}
       size={size}
-      click={action(`${content}-button-clicked`)}
+      onClick={action(`${content}-button-clicked`)}
     />
   </ThemeProvider>
 );
@@ -83,7 +83,7 @@ const iconButtonList = [
 storiesOf('Button', module)
   .addDecorator(withNotes)
   .addDecorator(withTheme)
-  .add('Basic', () => <Button content="Button" click={action('Button clicked')} />, {
+  .add('Basic', () => <Button content="Button" onClick={action('Button clicked')} />, {
     notes: { markdown: notes },
   })
   .add(

@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, string } from 'prop-types';
+import { string } from 'prop-types';
 import styled from 'styled-components';
 import {
   adjustHexLightness, hexIsLight, hexToRgb, isHex,
@@ -15,9 +15,11 @@ const determineTextShadow = (color) => {
   return `0 -1px 0 rgba(${rgb.join(', ')}, 0.5)`;
 };
 
-const Button = ({
-  click, color, content, icon, size,
-}) => {
+const Button = (props) => {
+  const {
+    color, content, icon, size,
+  } = props;
+
   const IconWrap = styled.div`
     font-size: 0.75em;
   `;
@@ -87,7 +89,7 @@ const Button = ({
   });
 
   return (
-    <StyledButton type="button" onClick={click}>
+    <StyledButton type="button" {...props}>
       <ContentWrap>
         {icon ? <IconWrap>{icon}</IconWrap> : null}
         <LabelWrap>{content}</LabelWrap>
@@ -96,14 +98,12 @@ const Button = ({
   );
 };
 Button.propTypes = {
-  click: func,
   color: string,
   content: string,
   icon: string,
   size: string,
 };
 Button.defaultProps = {
-  click: () => {},
   color: '',
   content: '',
   icon: '',
