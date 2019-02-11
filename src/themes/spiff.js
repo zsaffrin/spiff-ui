@@ -1,14 +1,11 @@
-const renderTheme = () => {
-  const baseFontSize = 16;
-
+const renderTheme = (baseFontSize = 16) => {
   const spacing = {
-    thin: '1px',
-    xs: '2px',
-    sm: `${baseFontSize * 0.25}px`, // 4px
-    md: `${baseFontSize * 0.5}px`, // 8px
-    lg: `${baseFontSize}px`, // 16px
-    xl: `${baseFontSize * 1.5}px`, // 24px
-    xxl: `${baseFontSize * 2}px`, // 32px
+    xs: baseFontSize * 0.125, // 2px
+    sm: baseFontSize * 0.25, //  4px
+    md: baseFontSize * 0.5, //   8px
+    lg: baseFontSize, //         16px
+    xl: baseFontSize * 1.5, //   24px
+    xxl: baseFontSize * 2, //    32px
   };
 
   return {
@@ -31,4 +28,4 @@ const renderTheme = () => {
   };
 };
 
-export default renderTheme();
+export default renderTheme(16);
