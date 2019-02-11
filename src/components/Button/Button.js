@@ -18,11 +18,13 @@ const determineTextShadow = (color) => {
 const Button = ({
   click, color, content, icon, size,
 }) => {
-  const IconWrap = styled.div``;
+  const IconWrap = styled.div`
+    font-size: 0.75em;
+  `;
   const LabelWrap = styled.div``;
   const ContentWrap = styled.div`
     display: grid;
-    grid-gap: 4px;
+    grid-gap: ${icon ? '4px' : 0};
     grid-template-columns: auto 1fr;
     align-items: center;
   `;
@@ -41,12 +43,10 @@ const Button = ({
 
     let padding = '5px';
     if (spacing) {
-      padding = `${spacing.md} ${spacing.lg}`;
-      if (size === 'tiny' || size === 'small') {
-        padding = `${spacing.sm} ${spacing.md}`;
-      }
-      if (size === 'large') padding = `${spacing.md} ${spacing.lg}`;
-      if (size === 'huge') padding = `${spacing.lg} ${spacing.xl}`;
+      padding = `${spacing.md}px ${spacing.lg}px`;
+      if (size === 'tiny' || size === 'small') padding = `${spacing.sm}px ${spacing.md}px`;
+      if (size === 'large') padding = `${spacing.md}px ${spacing.lg}px`;
+      if (size === 'huge') padding = `${spacing.lg}px ${spacing.xl}px`;
     }
 
     let fontsize = `${baseFontSize}px` || '16px';
@@ -89,7 +89,7 @@ const Button = ({
   return (
     <StyledButton type="button" onClick={click}>
       <ContentWrap>
-        {icon ? <IconWrap>{icon}</IconWrap> : ''}
+        {icon ? <IconWrap>{icon}</IconWrap> : null}
         <LabelWrap>{content}</LabelWrap>
       </ContentWrap>
     </StyledButton>

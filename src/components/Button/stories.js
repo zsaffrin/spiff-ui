@@ -2,12 +2,17 @@ import React from 'react';
 import { string } from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withNotes } from '@storybook/addon-notes';
 import styled, { ThemeProvider } from 'styled-components';
 import Button from './Button';
 import spiff from '../../themes/spiff';
+import notes from './README.md';
+
+const activeTheme = spiff;
 
 const ButtonList = styled.ul`
   display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
@@ -18,10 +23,12 @@ const ButtonListItem = styled.li`
   padding: 2px;
 `;
 
+const withTheme = storyFn => <ThemeProvider theme={activeTheme}>{storyFn()}</ThemeProvider>;
+
 const BasicButton = ({
   color, content, icon, size,
 }) => (
-  <ThemeProvider theme={spiff}>
+  <ThemeProvider theme={activeTheme}>
     <Button
       color={color}
       content={content}
@@ -60,38 +67,68 @@ const colorValButtonList = [
 ];
 
 const sizeButtonList = [
+  <BasicButton content="Tiny" size="tiny" />,
+  <BasicButton content="Small" size="small" />,
+  <BasicButton content="Default" />,
+  <BasicButton content="Large" size="large" />,
+  <BasicButton content="Huge" size="huge" />,
+];
+
+const iconButtonList = [
   <BasicButton icon="⚙️" content="Settings" />,
   <BasicButton icon="💾" content="Save" />,
   <BasicButton icon="❌" content="Cancel" />,
 ];
 
 storiesOf('Button', module)
-  .add('Basic', () => <BasicButton content="Button" />)
-  .add('Colors', () => (
-    <>
+  .addDecorator(withNotes)
+  .addDecorator(withTheme)
+  .add('Basic', () => <Button content="Button" click={action('Button clicked')} />, {
+    notes: { markdown: notes },
+  })
+  .add(
+    'Colors',
+    () => (
+      <div>
+        <ButtonList>
+          {colorNameButtonList.map(item => (
+            <ButtonListItem>{item}</ButtonListItem>
+          ))}
+        </ButtonList>
+        <ButtonList>
+          {colorValButtonList.map(item => (
+            <ButtonListItem>{item}</ButtonListItem>
+          ))}
+        </ButtonList>
+      </div>
+    ),
+    {
+      notes: { markdown: notes },
+    },
+  )
+  .add(
+    'Sizes',
+    () => (
       <ButtonList>
-        {colorNameButtonList.map(item => (
+        {sizeButtonList.map(item => (
           <ButtonListItem>{item}</ButtonListItem>
         ))}
       </ButtonList>
+    ),
+    {
+      notes: { markdown: notes },
+    },
+  )
+  .add(
+    'Icons',
+    () => (
       <ButtonList>
-        {colorValButtonList.map(item => (
+        {iconButtonList.map(item => (
           <ButtonListItem>{item}</ButtonListItem>
         ))}
       </ButtonList>
-    </>
-  ))
-  .add('Sizes', () => (
-    <ButtonList>
-      {sizeButtonList.map(item => (
-        <ButtonListItem>{item}</ButtonListItem>
-      ))}
-    </ButtonList>
-  ))
-  .add('Icons', () => (
-    <ButtonList>
-      {sizeButtonList.map(item => (
-        <ButtonListItem>{item}</ButtonListItem>
-      ))}
-    </ButtonList>
-  ));
+    ),
+    {
+      notes: { markdown: notes },
+    },
+  );
