@@ -1,10 +1,7 @@
 import React from 'react';
-import { oneOfType, object, string } from 'prop-types';
 import styled from 'styled-components';
 
 const TextInput = (props) => {
-  const { value } = props;
-
   const StyledInput = styled.input(({ theme }) => {
     const { baseFontSize, colors, spacing } = theme;
 
@@ -17,13 +14,7 @@ const TextInput = (props) => {
     `;
   });
 
-  return <StyledInput value={value} {...props} />;
-};
-TextInput.propTypes = {
-  value: oneOfType([object, string]),
-};
-TextInput.defaultProps = {
-  value: '',
+  return <StyledInput {...props} />;
 };
 
 export default TextInput;

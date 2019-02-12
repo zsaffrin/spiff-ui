@@ -10,6 +10,8 @@ const renderTheme = (baseFontSize = 16) => {
 
   return {
     name: 'zeact',
+    bodyFontFamily:
+      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     baseFontSize,
     colors: {
       black: '#111',

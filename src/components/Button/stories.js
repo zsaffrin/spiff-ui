@@ -3,12 +3,10 @@ import { string } from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withNotes } from '@storybook/addon-notes';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
+import Spiff from '../Spiff';
 import Button from './Button';
-import spiff from '../../themes/spiff';
 import notes from './README.md';
-
-const activeTheme = spiff;
 
 const ButtonList = styled.ul`
   display: flex;
@@ -23,12 +21,12 @@ const ButtonListItem = styled.li`
   padding: 2px;
 `;
 
-const withTheme = storyFn => <ThemeProvider theme={activeTheme}>{storyFn()}</ThemeProvider>;
+const withTheme = storyFn => <Spiff>{storyFn()}</Spiff>;
 
 const BasicButton = ({
   color, content, icon, size,
 }) => (
-  <ThemeProvider theme={activeTheme}>
+  <Spiff>
     <Button
       color={color}
       content={content}
@@ -36,7 +34,7 @@ const BasicButton = ({
       size={size}
       onClick={action(`${content}-button-clicked`)}
     />
-  </ThemeProvider>
+  </Spiff>
 );
 BasicButton.propTypes = {
   color: string,

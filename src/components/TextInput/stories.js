@@ -1,13 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import Spiff from '../Spiff';
 import TextInput from './TextInput';
-import spiff from '../../themes/spiff';
 import notes from './README.md';
 
-const activeTheme = spiff;
-
-const withTheme = storyFn => <ThemeProvider theme={activeTheme}>{storyFn()}</ThemeProvider>;
+const withTheme = storyFn => <Spiff>{storyFn()}</Spiff>;
 
 storiesOf('Input', module)
   .addDecorator(withTheme)
