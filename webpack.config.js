@@ -11,23 +11,15 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-      {
-        test: /\.(png|gif|jpg|svg)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 50000,
-          },
-        },
-      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.json', '.png', '.gif', '.jpg', '.svg'],
+    extensions: ['.js', '.json'],
   },
   output: {
-    path: path.resolve(__dirname, 'dist/'),
-    publicPath: '',
+    path: path.resolve('./build'),
     filename: 'spiff.js',
+    libraryTarget: 'var',
+    library: 'Spiff',
   },
 };
