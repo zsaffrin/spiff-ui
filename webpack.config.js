@@ -17,9 +17,8 @@ module.exports = {
     extensions: ['.js', '.json'],
   },
   output: {
-    path: path.resolve('./build'),
+    path: path.resolve(__dirname, 'build/'),
     filename: 'spiff.js',
-    libraryTarget: 'var',
-    library: 'Spiff',
+    libraryTarget: 'umd',
   },
 };
