@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 const TextInput = (props) => {
   const StyledInput = styled.input(({ theme }) => {
-    const { baseFontSize, colors, spacing } = theme;
+    const { baseFontSize, inputs, spacing } = theme;
 
     return `
-      background: ${colors.white || '#fff'};
-      border: 1px solid ${colors.grays[2] || '#666'}
-      border-radius: ${spacing.sm || 0}px;
+      background: ${inputs.background || '#fff'};
+      border: ${inputs.border || '1px solid #666'}
+      border-radius: ${inputs.borderRadius || 0};
       font-size: ${baseFontSize}px;
       padding: ${spacing.md}px;
     `;
