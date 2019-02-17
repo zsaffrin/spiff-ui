@@ -40,6 +40,13 @@
     "react": "^16.7.0",
     "styled-components": "^4.1.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zsaffrin/spiff-ui.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/zsaffrin/spiff-ui/issues"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
