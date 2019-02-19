@@ -1,4 +1,4 @@
-# 🚀 Spiff-UI
+# 🚀 Spiff
 
 A handy little React UI component kit and design system
 
