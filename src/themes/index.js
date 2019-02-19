@@ -1,3 +1,7 @@
 import spiff from './spiff';
 
-export default spiff;
+const themes = {
+  spiff,
+};
+
+export default themes;
