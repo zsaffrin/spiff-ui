@@ -1,4 +1,11 @@
 const renderTheme = (baseFontSize = 16) => {
+  const breakpoints = {
+    sm: '600px',
+    md: '960px',
+    lg: '1280px',
+    xl: '1920px',
+  };
+
   const colors = {
     black: '#111',
     grays: ['#ebedee', '#dee1e3', '#bec4c8', '#97a1a7', '#5f6e78'],
@@ -30,6 +37,7 @@ const renderTheme = (baseFontSize = 16) => {
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     baseFontSize,
     colors,
+    containerWidth: breakpoints.md,
     spacing,
     buttons: {
       corners: '3px',
