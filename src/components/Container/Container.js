@@ -11,7 +11,7 @@ const Container = ({ children, width }) => {
     return `
       margin-left: auto;
       margin-right: auto;
-      max-width: ${width || containerWidth};
+      max-width: ${width || containerWidth || 'none'};
     `;
   });
 
