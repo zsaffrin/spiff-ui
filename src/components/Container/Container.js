@@ -5,11 +5,15 @@ import {
 import styled from 'styled-components';
 
 const Container = ({ children, width }) => {
-  const Wrapper = styled.div`
-    margin-left: auto;
-    margin-right: auto;
-    max-width: ${width || 'none'};
-  `;
+  const Wrapper = styled.div(({ theme }) => {
+    const { containerWidth } = theme;
+
+    return `
+      margin-left: auto;
+      margin-right: auto;
+      max-width: ${width || containerWidth || 'none'};
+    `;
+  });
 
   return <Wrapper>{children}</Wrapper>;
 };
