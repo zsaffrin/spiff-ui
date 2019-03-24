@@ -1,3 +1,4 @@
-export * from './components';
-export * from './themes';
-export * from './utils';
+export {
+  Button, Container, Spiff, TextInput,
+} from './components';
+export { default as themes } from './themes';

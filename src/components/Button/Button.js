@@ -39,9 +39,15 @@ const Button = (props) => {
     let background = '#ccc';
     if (isHex(color)) {
       background = color;
-    } else if (colors[color]) background = colors[color];
+    } else if (colors && colors[color]) {
+      background = colors[color];
+    }
 
-    const textColor = hexIsLight(background) ? colors.black || '#000' : colors.white || '#fff';
+    const bgIsLight = hexIsLight(background);
+    let textColor = bgIsLight ? '#000' : '#fff';
+    if (colors) {
+      textColor = bgIsLight ? colors.black : colors.white;
+    }
 
     let padding = '5px';
     if (spacing) {
@@ -63,12 +69,12 @@ const Button = (props) => {
       appearance: none;
       background: ${background};
       border: 1px solid ${adjustHexLightness(background, -15)};
-      border-radius: ${buttons.corners || 0};
+      border-radius: ${buttons && buttons.corners ? buttons.corners : 0};
       box-shadow: inset 0 1px 0 ${adjustHexLightness(background, 15)};
       color: ${textColor};
       cursor: pointer;
       font-size: ${fontsize};
-      font-weight: ${buttons.fontWeight || 'inherit'};
+      font-weight: ${buttons && buttons.fontWeight ? buttons.fontWeight : 'inherit'};
       padding: ${padding};
       text-shadow: ${determineTextShadow(background)};
       &:hover {
