@@ -9,6 +9,14 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'lib/main.js'),
       name: 'SpiffUI',
       fileName: 'spiff-ui'
+    },
+    rollupOptions: {
+      external: ['react'],
+      output: {
+        globals: {
+          react: 'react',
+        }
+      }
     }
   }
 });
