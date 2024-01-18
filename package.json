@@ -15,8 +15,12 @@
   "main": "build/spiff.js",
   "author": "Zach Saffrin <zach@zachsaffrin.com> (http://zachsaffrin.com)",
   "license": "MIT",
-  "devDependencies": {},
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.8"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zsaffrin/spiff-ui.git"
@@ -24,10 +28,11 @@
   "bugs": {
     "url": "git+https://github.com/zsaffrin/spiff-ui/issues"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/eslint-parser": "^7.23.3",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  }
 }
