@@ -5,6 +5,9 @@ import babelParser from '@babel/eslint-parser';
 export default [
   {
     files: ['**/*.{js,jsx}'],
+    extends: [
+      'eslint:recommended',
+    ],
     plugins: {
       react,
       reacthooks,
