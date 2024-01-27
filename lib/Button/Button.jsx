@@ -1,8 +1,16 @@
+import styled from 'styled-components';
+
+const StyledButton = styled.button(() => {
+  return `
+    cursor: pointer;
+  `;
+});
+
 const Button = () => {
   return (
-    <div>
+    <StyledButton>
       Button
-    </div>
+    </StyledButton>
   );
 };
 
