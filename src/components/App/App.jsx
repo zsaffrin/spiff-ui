@@ -8,7 +8,7 @@ const App = () => {
       <Theme>
         <Section>
           <h1>🚀 Spiff UI</h1>
-          <p>A handy little React UI component kit and design systematic</p>
+          <p>A handy little React UI component kit and design system</p>
         </Section>
         <Section>
           <Button />
