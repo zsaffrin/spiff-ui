@@ -1,18 +1,13 @@
-import { Button } from '../../../';
-import { Section } from '../ui';
 import { Theme } from './Theme';
+import { Header } from './Header';
+import { Content } from './Content';
 
 const App = () => {
   return (
     <div>
       <Theme>
-        <Section>
-          <h1>🚀 Spiff UI</h1>
-          <p>A handy little React UI component kit and design system</p>
-        </Section>
-        <Section>
-          <Button />
-        </Section>
+        <Header />
+        <Content />
       </Theme>
     </div>
   );
